@@ -28,7 +28,7 @@ public class Menu extends HashSet<MenuItem> {
 		boolean found = false;
 		while (!found && it.hasNext()) {
 			item = it.next();
-			if (item.getName().equals(name))
+			if (item.getName().toLowerCase().equals(name.toLowerCase()))
 				found = true;
 		}
 		if (!found) 

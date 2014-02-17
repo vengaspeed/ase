@@ -39,7 +39,7 @@ public class Order {
 		return item.getName().toUpperCase() + "\t" + 
 				String.valueOf(quantity) + " * " + 
 				String.valueOf(item.getPrice()) + " = " 
-				+ String.valueOf(quantity*item.getPrice()) + "\n";	
+				+ String.valueOf(quantity*item.getPrice());	
 	}
 	
 

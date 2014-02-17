@@ -4,7 +4,7 @@ public class RestaurantDemo {
 
 	
 	public static void main(String[] args){
-		Restaurant restaurant = new Restaurant();
-		System.out.println("Started2.");
+		Restaurant restaurant = new Restaurant("menu.txt","orders.txt");
+		System.out.println("Finish.");
 	}
 }

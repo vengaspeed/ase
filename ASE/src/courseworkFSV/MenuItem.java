@@ -1,5 +1,7 @@
 package courseworkFSV;
 
+import courseworkFSV.exception.ImpossiblePriceException;
+
 /**
  * @author Noel Stephanie, Vasilis Tsifountidis, Florent Gonin
  * a simple class to contain and manage a menu item
@@ -18,11 +20,15 @@ public class MenuItem implements Comparable<MenuItem>{
      * @param name The name of the menu item.
      * @param price The price of the menu item.
      * @param category The category of the menu item ie Starter, Main, Dessert or Drink.
+     * @throws ImpossiblePriceException 
      */
-	public MenuItem(final String name, final double price, final Category category){
+	public MenuItem(final String name, final double price, final Category category) throws ImpossiblePriceException{
 		this.name = name;
-		this.price = price;
 		this.category = category;
+		if (price < 0)
+			throw new ImpossiblePriceException(price);
+		this.price = price;
+		
 	}
 	
     /**
