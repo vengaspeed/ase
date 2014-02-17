@@ -1,0 +1,6 @@
+Smoked Salmon;6.00;Starter
+Chicken Balerno;8.00;Main
+Roast Beef;10.00;Main
+Chocolate Cake;4.50;Dessert
+Coffee and Mints;2.50;Drink
+Carrot Soup;3.50;Starter
