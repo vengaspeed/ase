@@ -42,5 +42,11 @@ public class Order {
 				+ String.valueOf(quantity*item.getPrice());	
 	}
 	
+    /**
+     * @return the total cost the order
+     */
+	public double totalCost(){
+		return quantity*item.getPrice();
+	}
 
 }
