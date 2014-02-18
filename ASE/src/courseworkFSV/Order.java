@@ -31,7 +31,14 @@ public class Order {
 		maxID = this.orderId;
 	}
 	
-    /**
+	/**
+     * @return The id of the order.
+     */
+    public int getOrderId() {
+		return orderId;
+	}
+
+	/**
      * @return A string containing all details of the order.
      */
 	@Override

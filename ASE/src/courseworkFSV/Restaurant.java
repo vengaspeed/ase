@@ -7,7 +7,6 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.util.HashMap;
-import java.util.HashSet;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
@@ -62,9 +61,11 @@ public class Restaurant {
 
 		BufferedReader buff = null;
 		String data [] = new String[3];
+		
 		try {
 			buff = new BufferedReader(new FileReader(filename));
-			String inputLine = buff.readLine();  //read first line
+			String inputLine = buff.readLine(); 
+			//read first line
 			while(inputLine != null){  
 				//split line into parts
 				data  = inputLine.split(";");
@@ -84,10 +85,12 @@ public class Restaurant {
 		}
 		catch(FileNotFoundException e) {
 			System.out.println(e.getMessage());
+			System.out.println("Program stopped.");
 			System.exit(1);
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			System.out.println("Program stopped.");
 			System.exit(1);        	
 		}
 		catch (NumberFormatException nfe) {
@@ -102,10 +105,12 @@ public class Restaurant {
 		}
 		catch (ImpossiblePriceException ipe) {
 			System.out.println (ipe.getMessage());
+			System.out.println("Program stopped.");
 			System.exit(-1);
 		}
 		catch(NoGoodStructureDocumentException ngsde) {
 			System.out.println (ngsde.getMessage());
+			System.out.println("Program stopped.");
 			System.exit(-1);
 		}
 		finally  {
@@ -157,10 +162,12 @@ public class Restaurant {
 		}
 		catch(FileNotFoundException e) {
 			System.out.println(e.getMessage());
+			System.out.println("Program stopped.");
 			System.exit(1);
 		}
 		catch (IOException e) {
-			e.printStackTrace();
+			System.out.println(e.getMessage());
+			System.out.println("Program stopped.");
 			System.exit(1);        	
 		}
 		catch (NumberFormatException nfe) {
@@ -170,10 +177,12 @@ public class Restaurant {
 		}
 		catch (NoMatchingDishException nmde) {
 			System.out.println (nmde.getMessage());
+			System.out.println("Program stopped.");
 			System.exit(-1);
 		}
 		catch(NoGoodStructureDocumentException ngsde) {
 			System.out.println (ngsde.getMessage());
+			System.out.println("Program stopped.");
 			System.exit(-1);
 		}
 		finally  {
