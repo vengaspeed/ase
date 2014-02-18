@@ -1,5 +1,7 @@
 package courseworkFSV;
 
+import courseworkFSV.exception.ImpossibleQuantityException;
+
 /**
  * @author Noel Stephanie, Vasilis Tsifountidis, Florent Gonin
  * a simple class to contain and manage an order
@@ -23,11 +25,14 @@ public class Order {
      * Set up the order details. The id is assigned according to the last id assigned and this one is updated.
      * @param item The menu item ordered.
      * @param quantity The quantity ordered.
+     * @throws ImpossibleQuantityException 
      */
-	public Order(final MenuItem item, final int quantity){
+	public Order(final MenuItem item, final int quantity) throws ImpossibleQuantityException{
 		this.item = item;
-		this.quantity = quantity;
 		this.orderId = Order.maxID + 1;
+		if (quantity <= 0) 
+			throw new ImpossibleQuantityException(quantity);
+		this.quantity = quantity;
 		maxID = this.orderId;
 	}
 	

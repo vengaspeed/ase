@@ -12,6 +12,7 @@ import java.util.List;
 import java.util.Map;
 
 import courseworkFSV.exception.ImpossiblePriceException;
+import courseworkFSV.exception.ImpossibleQuantityException;
 import courseworkFSV.exception.NoGoodStructureDocumentException;
 import courseworkFSV.exception.NoMatchingDishException;
 
@@ -177,6 +178,11 @@ public class Restaurant {
 		}
 		catch (NoMatchingDishException nmde) {
 			System.out.println (nmde.getMessage());
+			System.out.println("Program stopped.");
+			System.exit(-1);
+		}
+		catch (ImpossibleQuantityException iqe) {
+			System.out.println (iqe.getMessage());
 			System.out.println("Program stopped.");
 			System.exit(-1);
 		}
