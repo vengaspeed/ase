@@ -1,7 +1,9 @@
-package courseworkFSV;
+package courseworkFSV.main;
 
 import courseworkFSV.model.Restaurant;
-import courseworkFSV.view.RestaurantInterface;
+import courseworkFSV.view.RestaurantGUI;
+
+import courseworkFSV.controller.RestaurantController;
 
 public class RestaurantDemo {
 
@@ -10,7 +12,11 @@ public class RestaurantDemo {
 		Restaurant restaurant = Restaurant.getInstance("menu.txt", "orders.txt");	
 		
 		//test threads
-		restaurant.start();
+		RestaurantGUI restaurantGUI = new RestaurantGUI(restaurant);
+		
+		RestaurantController controller = new RestaurantController(restaurantGUI, restaurant);
+		
+		controller.start();
 
 		//System.out.println("Finish.");
 		

@@ -4,7 +4,8 @@ import java.util.ArrayList;
 import java.util.HashSet;
 import java.util.Set;
 
-import courseworkFSV.view.Observer;
+import courseworkFSV.interfaces.Observable;
+import courseworkFSV.interfaces.Observer;
 
 public class Kitchen extends ArrayList<Order> implements Observable {
 	/** Observers of the tables */
@@ -62,7 +63,6 @@ public class Kitchen extends ArrayList<Order> implements Observable {
 	 * Attaches an observer
 	 * @param o Observer to attach.
 	 */
-	@Override
 	public void addObserver(Observer o) {
 		observers.add(o);
 		
@@ -72,11 +72,13 @@ public class Kitchen extends ArrayList<Order> implements Observable {
 	 * Detaches an observer
 	 * @param o Observer to detach.
 	 */
-	@Override
 	public void removeObserver(Observer o) {
 		observers.remove(o);
 		
 	}
+
+	
+	
 	
 	
 }

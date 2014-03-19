@@ -15,7 +15,8 @@ import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
 
-import courseworkFSV.view.TestView;
+
+import courseworkFSV.controller.RestaurantController;
 import courseworkFSV.exception.ImpossiblePriceException;
 import courseworkFSV.exception.ImpossibleQuantityException;
 import courseworkFSV.exception.NoGoodStructureDocumentException;
@@ -35,6 +36,10 @@ public class Restaurant {
 	private Menu menu;
 	/** List of orders to treat */
 	private List<Order> orders;
+	
+	//a reference to controller
+	private RestaurantController controller;
+	
 	/**
 	 * Set up the restaurant details.
 	 * @param menuFile The name of the file containing the menu.
@@ -46,6 +51,7 @@ public class Restaurant {
 		orders = new LinkedList<Order>();
 		importMenu(menuFile);
 		importOrders(ordersFile);
+		
 	}
 	
 	/** Instance of the Restaurant class. */
@@ -88,7 +94,7 @@ public class Restaurant {
 	 * @param filename The name of the file containing the menu.
 	 */
 	public void importMenu(final String filename){
-		//initialise empty  menu
+		//initialize empty  menu
 		menu = new Menu();
 
 		BufferedReader buff = null;
@@ -372,13 +378,30 @@ public class Restaurant {
 	public void start () {
 		System.out.println("Running ");
 		
-		Thread thread4 = new Thread(new ToTables(kitchen,tables));
+		Thread thread3 = new Thread(new ToKitchen(kitchen, orders, controller));
+		thread3.start();
+		
+		Thread thread4 = new Thread(new ToTables(kitchen, tables, controller));
 		thread4.start();
 		
-		Thread thread3 = new Thread(new ToKitchen(kitchen,orders));
-		thread3.start();
-		TestView t = new TestView(kitchen);
-		t.run();
+	}
+
+	/**
+	 * @return the kitchen
+	 */
+	public Kitchen getKitchen() {
+		return kitchen;
+	}
+
+	/**
+	 * @return the tables
+	 */
+	public Tables getTables() {
+		return tables;
+	}	
+	
+	public void setController(RestaurantController controller){
+		this.controller = controller;
 	}
 	
 }

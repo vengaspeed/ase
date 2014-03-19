@@ -5,7 +5,8 @@ import java.util.LinkedList;
 import java.util.List;
 import java.util.Set;
 
-import courseworkFSV.view.Observer;
+import courseworkFSV.interfaces.Observable;
+import courseworkFSV.interfaces.Observer;
 
 public class Tables extends HashMap<Integer, List<Order>> implements Observable{
 	/** Observers of the tables */
@@ -66,6 +67,5 @@ public class Tables extends HashMap<Integer, List<Order>> implements Observable{
 	@Override
 	public void removeObserver(final Observer o) {
 		observers.remove(o);
-		
 	}
 }
