@@ -36,7 +36,6 @@ public class ToKitchen implements Runnable{
 				System.out.println(e.getMessage());
 			}			
 			controller.addOrderToKitchen(o);
-			System.out.println("bring one order to table");
 			
 		}
 		kitchen.setFinished();

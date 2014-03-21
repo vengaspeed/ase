@@ -2,6 +2,7 @@ package courseworkFSV.view;
 
 import java.awt.BorderLayout;
 import java.util.ArrayList;
+import java.util.Iterator;
 import java.util.List;
 
 import javax.swing.JFrame;
@@ -53,11 +54,13 @@ public class TableGUI extends JFrame implements Observer{
 			//check and add order that has not yet in table
 			//but delivered to this table
 			for (Order order: tables.get(id)){
+				Iterator<Order> it = items.iterator();
+				Order item = null;
 				boolean found = false;
-				for (Order item: items){
+				while (!found && it.hasNext()) {
+					item = it.next();
 					if (order.getOrderId() == item.getOrderId()){
 						found = true;
-						break;
 					}
 				}
 				if (!found){

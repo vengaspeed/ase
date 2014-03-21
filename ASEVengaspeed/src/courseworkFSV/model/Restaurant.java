@@ -8,12 +8,16 @@ import java.io.FileReader;
 import java.io.FileWriter;
 import java.io.IOException;
 import java.text.DecimalFormat;
+import java.util.ArrayList;
 import java.util.HashMap;
 import java.util.Iterator;
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Map;
 import java.util.Map.Entry;
+
+
+
 
 
 import courseworkFSV.controller.RestaurantController;
@@ -50,7 +54,8 @@ public class Restaurant {
 		kitchen = new Kitchen();
 		orders = new LinkedList<Order>();
 		importMenu(menuFile);
-		importOrders(ordersFile);
+		//importOrders(ordersFile);
+		createOrdersRandomly(10);
 		
 	}
 	
@@ -58,7 +63,7 @@ public class Restaurant {
 	private static boolean instanced= false;
 	
 	/**
-	 * Singleton
+	 * Tests if a instance has already been created. If not, it returns one.
 	 * @return instance of Restaurant
 	 */
 	public static Restaurant getInstance(final String menuFile, final String orderFile){
@@ -88,7 +93,27 @@ public class Restaurant {
 	public Menu getMenu() {
 		return menu;
 	}
-
+	
+	/**
+	 * Fills the orders list with orders created randomly.
+	 */ 
+	public void createOrdersRandomly(int n) {
+		List<MenuItem> list = new ArrayList<MenuItem>(menu);
+		int nbItems = list.size() - 1;
+		for (int i = 0; i < n; i++) {
+			int itemIndex = 1 + (int)(Math.random()*nbItems);
+			int tableId = 1 + (int)(Math.random()*3); 
+			int quantity = 1 + (int)(Math.random()*3);
+			Order o = null;
+			try {
+				o = new Order (list.get(itemIndex), quantity, tableId);
+				orders.add(o);
+			} catch (ImpossibleQuantityException e) {
+				e.printStackTrace();
+			}
+		}
+	}
+	
 	/**
 	 * Imports the menu.
 	 * @param filename The name of the file containing the menu.

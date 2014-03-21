@@ -4,10 +4,12 @@ import javax.swing.*;
 import javax.swing.plaf.TableUI;
 import javax.swing.table.DefaultTableModel;
 
+import courseworkFSV.controller.ReportListener;
 import courseworkFSV.interfaces.Observer;
 import courseworkFSV.model.Order;
 import courseworkFSV.model.Restaurant;
 import courseworkFSV.model.ToTables;
+
 
 
 
@@ -104,7 +106,7 @@ public class RestaurantGUI extends JFrame implements ActionListener, Observer {
 		
 		//button for displaying report summary
 		report = new JButton("Do the report summary");
-		report.addActionListener(this); //event is triggered by selecting it
+		report.addActionListener(new ReportListener(this)); //event is triggered by selecting it
 		pnlNorth.add(report);
 		
 		//red button for exiting system
@@ -136,6 +138,13 @@ public class RestaurantGUI extends JFrame implements ActionListener, Observer {
 		tableView3.setLocation(550, 500);
 	}
 	
+	/**
+	 * Export the summary of the restaurant
+	 */
+	public void report () {
+		restaurant.export("testExport.txt");
+	}
+	
 	@Override
 	/**
 	 * Event is triggered when user clicks on a combobox option, what to do next is in this function
@@ -143,10 +152,6 @@ public class RestaurantGUI extends JFrame implements ActionListener, Observer {
 	 */
 	public void actionPerformed(ActionEvent e) {
 		
-		//export report
-		if (e.getSource() == report){
-			restaurant.export("testExport.txt");
-		}
 		//event for button to exit the system
 		if (e.getSource() == exitSystem ){
 			System.exit(1);
