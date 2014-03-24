@@ -3,7 +3,7 @@ package courseworkFSV.model;
 import courseworkFSV.exception.ImpossiblePriceException;
 
 /**
- * 
+ * @author Noel Stephanie, Vasilis Tsifountidis, Florent Gonin
  * a simple class to contain and manage a menu item
  */
 public class MenuItem implements Comparable<MenuItem> {

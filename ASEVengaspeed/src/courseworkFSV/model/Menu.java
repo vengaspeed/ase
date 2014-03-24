@@ -8,7 +8,7 @@ import java.util.TreeSet;
 import courseworkFSV.exception.NoMatchingDishException;
 
 /**
- * 
+ * @author Noel Stephanie, Vasilis Tsifountidis, Florent Gonin
  * a simple class to contain and manage the menu
  */
 public class Menu extends HashSet<MenuItem> {

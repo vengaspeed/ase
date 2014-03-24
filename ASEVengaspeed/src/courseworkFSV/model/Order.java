@@ -3,7 +3,7 @@ package courseworkFSV.model;
 import courseworkFSV.exception.ImpossibleQuantityException;
 
 /**
- * 
+ * @author Noel Stephanie, Vasilis Tsifountidis, Florent Gonin
  * a simple class to contain and manage an order
  */
 

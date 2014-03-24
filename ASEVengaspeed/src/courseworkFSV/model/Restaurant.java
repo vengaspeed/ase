@@ -23,7 +23,7 @@ import courseworkFSV.exception.NoGoodStructureDocumentException;
 import courseworkFSV.exception.NoMatchingDishException;
 
 /**
- * 
+ * @author Noel Stephanie, Vasilis Tsifountidis, Florent Gonin
  * a simple class to contain and manage the restaurant details
  */
 public class Restaurant {
