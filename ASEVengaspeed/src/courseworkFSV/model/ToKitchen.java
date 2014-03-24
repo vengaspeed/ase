@@ -2,27 +2,25 @@ package courseworkFSV.model;
 
 import java.util.List;
 
-import courseworkFSV.controller.RestaurantController;
-
-public class ToKitchen implements Runnable{
+public class ToKitchen implements Runnable {
 	/** Kitchen to send the orders. */
 	private Kitchen kitchen;
 	/** Orders to send. */
 	private List<Order> orders;
-	//a reference to controller
-	private RestaurantController controller;
-	
+
 	/**
 	 * Set up attributes
-	 * @param kitchen Kitchen to send the orders.
-	 * @param orders Orders to send.
+	 * 
+	 * @param kitchen
+	 *            Kitchen to send the orders.
+	 * @param orders
+	 *            Orders to send.
 	 */
-	public ToKitchen (final Kitchen kitchen, final List<Order> orders, final RestaurantController controller) {
+	public ToKitchen(final Kitchen kitchen, final List<Order> orders) {
 		this.kitchen = kitchen;
 		this.orders = orders;
-		this.controller = controller;
 	}
-	
+
 	/**
 	 * Sends orders to kitchen.
 	 */
@@ -30,12 +28,16 @@ public class ToKitchen implements Runnable{
 	public void run() {
 		for (Order o : orders) {
 			try {
-				int sec = 1 + (int)(Math.random()*3); 
-				Thread.sleep(sec*1000);
+				int sec = 1 + (int) (Math.random() * 3);
+				Thread.sleep(sec * 1000);
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
-			}			
-			controller.addOrderToKitchen(o);
+			}
+			
+			synchronized (kitchen) {
+				kitchen.add(o);
+				kitchen.notifyAll();
+			}	
 			
 		}
 		kitchen.setFinished();

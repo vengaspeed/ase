@@ -10,19 +10,33 @@ import courseworkFSV.interfaces.Observer;
 public class Kitchen extends ArrayList<Order> implements Observable {
 	/** Observers of the tables */
 	private Set<Observer> observers;
-	private boolean finished =false;
-	/** 
-	 * Set up the structure :  LinkedList<Order> 
+	private boolean finished = false;
+
+	/** Log of the kitchen */
+	private String kitchenLog = "";
+
+	/** return the kitchen log */
+	public String getKitchenLog() {
+		return kitchenLog;
+	}
+
+	/** set the kitchen log */
+	public void setKitchenLog(String action) {
+		kitchenLog += action + "\n";
+	}
+
+	/**
+	 * Set up the structure : LinkedList<Order>
 	 */
 	public Kitchen() {
 		super();
 		observers = new HashSet<Observer>();
 	}
-	
-	public void setFinished () {
+
+	public void setFinished() {
 		finished = true;
 	}
-	
+
 	public boolean getFinished() {
 		return finished;
 	}
@@ -34,19 +48,22 @@ public class Kitchen extends ArrayList<Order> implements Observable {
 
 	@Override
 	public synchronized boolean add(Order o) {
-		System.out.println(o.getOrderId() +" added");
+		System.out.println(o.getOrderId() + " added");
+		
+		boolean result = super.add(o);
 		notifyObservers();
-		return super.add(o);
+		return result;
 	}
-	
+
 	@Override
 	public synchronized Order remove(int index) {
 		Order o = this.get(index);
-		System.out.println(o.getOrderId() +" removed");
+		System.out.println(o.getOrderId() + " removed");
+		Order order = super.remove(index);
 		notifyObservers();
-		return super.remove(index);
+		return order;
 	}
-	
+
 	/**
 	 * Notify the observers that something change.
 	 */
@@ -55,30 +72,29 @@ public class Kitchen extends ArrayList<Order> implements Observable {
 		for (Observer o : observers) {
 			o.update();
 		}
-		
-	}
 
+	}
 
 	/**
 	 * Attaches an observer
-	 * @param o Observer to attach.
+	 * 
+	 * @param o
+	 *            Observer to attach.
 	 */
 	public void addObserver(Observer o) {
 		observers.add(o);
-		
+
 	}
 
 	/**
 	 * Detaches an observer
-	 * @param o Observer to detach.
+	 * 
+	 * @param o
+	 *            Observer to detach.
 	 */
 	public void removeObserver(Observer o) {
 		observers.remove(o);
-		
+
 	}
 
-	
-	
-	
-	
 }

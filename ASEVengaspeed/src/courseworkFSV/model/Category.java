@@ -2,15 +2,12 @@ package courseworkFSV.model;
 
 public enum Category {
 
-	
-	    STARTER, 
+	STARTER,
 
-	    MAIN, 
+	MAIN,
 
-	    DESSERT,
+	DESSERT,
 
-	    DRINK
+	DRINK
 
 }
-	
-

@@ -10,44 +10,51 @@ public class ToHatch implements Runnable {
 
 	/**
 	 * Set up attributes
-	 * @param kitchen kitchen to take the orders.
-	 * @param hatch hatch to put the orders.
+	 * 
+	 * @param kitchen
+	 *            kitchen to take the orders.
+	 * @param hatch
+	 *            hatch to put the orders.
 	 */
-	public ToHatch (final Kitchen kitchen, final Hatch hatch) {
+	public ToHatch(final Kitchen kitchen, final Hatch hatch) {
 		this.kitchen = kitchen;
 		this.hatch = hatch;
 	}
-
 
 	/**
 	 * Sends orders to hatch.
 	 */
 	public void run() {
-		while(!kitchen.getFinished()){
+		while (!kitchen.getFinished() || !kitchen.isEmpty()) {
 			if (!kitchen.isEmpty()) {
 				Order currentOrder = kitchen.get(0);
 
-				int sec = 1 + (int)(Math.random()*5); 
+				int sec = 1 + (int) (Math.random() * 5);
 				try {
-					Thread.sleep(sec*1000);
+					Thread.sleep(sec * 1000);
 				} catch (InterruptedException e) {
 					System.out.println(e.getMessage());
 				}
-				hatch.add(currentOrder);
-				kitchen.remove(0);
+				
+				synchronized (kitchen) {
+					kitchen.remove(0);
+					kitchen.notifyAll();
+				}	
+				
+				sec = 1 + (int) (Math.random() * 5);
+				try {
+					Thread.sleep(sec * 1000);
+				} catch (InterruptedException e) {
+					System.out.println(e.getMessage());
+				}
+				
+				synchronized (hatch) {
+					hatch.add(currentOrder);
+					hatch.notifyAll();
+				}
+				
+							
 			}
-		}
-		while(!kitchen.isEmpty()){
-			Order currentOrder = kitchen.get(0);
-
-			int sec = 1 + (int)(Math.random()*5); 
-			try {
-				Thread.sleep(sec*1000);
-			} catch (InterruptedException e) {
-				System.out.println(e.getMessage());
-			}
-			hatch.add(currentOrder);
-			kitchen.remove(0);
 		}
 		hatch.setFinished();
 	}
