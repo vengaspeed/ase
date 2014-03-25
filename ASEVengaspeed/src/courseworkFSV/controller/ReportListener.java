@@ -31,12 +31,6 @@ public class ReportListener implements ActionListener {
 	 */
 	public void actionPerformed(ActionEvent e) {
 
-		// event for button to exit the system
-		if (e.getSource() instanceof JButton && 
-				((JButton)e.getSource()).getText().equals(" E X I T  System")) {
-			System.exit(1);
-		}
-
 		int tblId = 0;
 		JFrame tableInfo;
 		// we will use a table to show results, we declare first the column

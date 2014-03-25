@@ -15,6 +15,7 @@ import javax.swing.JPanel;
 import javax.swing.JScrollPane;
 import javax.swing.JTextArea;
 
+import courseworkFSV.controller.ExitListener;
 import courseworkFSV.controller.ReportListener;
 import courseworkFSV.interfaces.Observer;
 import courseworkFSV.model.Order;
@@ -156,10 +157,10 @@ public class RestaurantGUI extends JFrame implements Observer {
 		// event is triggered by selecting it
 		report.addActionListener(reportListener); 
 		
-		// when user selects combobox element, event is triggered
+		// when user selects combo box element, event is triggered
 		tableIdChoice.addActionListener(reportListener);
 		
-		exitSystem.addActionListener(reportListener);
+		exitSystem.addActionListener(new ExitListener());
 	}
 
 	public int getTableIdChoice() {
