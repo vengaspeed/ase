@@ -65,7 +65,6 @@ public class Hatch extends LinkedList<Order> implements Observable {
 	 */
 	@Override
 	public synchronized boolean add(Order o) {
-		System.out.println(o.getOrderId() + " moved to hatch");
 		// add to hatch log
 		setHatchLog(o.getOrderId() + " added");
 		boolean result = super.add(o);

@@ -54,8 +54,6 @@ public class Tables extends HashMap<Integer, List<Order>> implements Observable 
 			l.add(order);
 			this.put(tableID, l);
 		}
-
-		System.out.println(order.getOrderId() + " moved to Tables");
 		// add to table log
 		setTableLog("Order " + order.getOrderId() + " sent to table " + tableID);
 		// update view display

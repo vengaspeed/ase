@@ -41,13 +41,6 @@ public class ToHatch implements Runnable {
 					kitchen.notifyAll();
 				}	
 				
-				sec = 1 + (int) (Math.random() * 5);
-				try {
-					Thread.sleep(sec * 1000);
-				} catch (InterruptedException e) {
-					System.out.println(e.getMessage());
-				}
-				
 				synchronized (hatch) {
 					hatch.add(currentOrder);
 					hatch.notifyAll();

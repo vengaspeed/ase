@@ -14,7 +14,9 @@ public class MenuItem implements Comparable<MenuItem> {
 	private double price;
 	/** The category of the menu item ie Starter, Main, Dessert or Drink. */
 	private Category category;
-
+	/** The time of cooking in ms*/
+	private int cookingTime;
+	
 	/**
 	 * Set up the menu item details.
 	 * 
@@ -34,7 +36,8 @@ public class MenuItem implements Comparable<MenuItem> {
 		if (price < 0)
 			throw new ImpossiblePriceException(price);
 		this.price = price;
-
+		int sec = 1 + (int) (Math.random() * 5);
+		this.cookingTime = sec * 1000;
 	}
 
 	/**
@@ -57,7 +60,13 @@ public class MenuItem implements Comparable<MenuItem> {
 	public Category getCategory() {
 		return category;
 	}
-
+	
+	/**
+	 * @return The time of cooking in ms.
+	 */
+	public int getCookingTime() {
+		return cookingTime;
+	}
 	/**
 	 * Test for content equality between two menu item.
 	 * 
