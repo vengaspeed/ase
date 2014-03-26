@@ -27,8 +27,9 @@ public class ToKitchen implements Runnable {
 	@Override
 	public void run() {
 		for (Order o : orders) {
+			int sec = 1 + (int) (Math.random() * 3);
 			try {
-				Thread.sleep(o.getItem().getCookingTime());
+				Thread.sleep(sec * 1000);
 			} catch (InterruptedException e) {
 				System.out.println(e.getMessage());
 			}
