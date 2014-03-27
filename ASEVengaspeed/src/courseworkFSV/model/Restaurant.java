@@ -409,7 +409,7 @@ public class Restaurant {
 
 		try {
 
-			File file = new File("testExport.txt");
+			File file = new File(fileName);
 
 			// if a new report is detected (string "Report:\n\n" is detected
 			// then the last report is deleted
