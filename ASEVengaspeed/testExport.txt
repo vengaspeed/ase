@@ -1,0 +1,68 @@
+Report:
+
+Menu:
+
+STARTER
+CARROT SOUP	3.5
+PIZZA BREAD	2.0
+PRAWN COCKTAIL	4.0
+SMOKED SALMON	6.0
+SOUP OF THE DAY	4.0
+
+MAIN
+BAKED MUSHROOMS	12.0
+CHICKEN BALERNO	8.0
+PAN FRIED CHICKEN	12.0
+ROAST BEEF	10.0
+ROASTED LAMB	16.0
+SPAGGHETTINI	9.0
+
+DESSERT
+CHOCOLATE CAKE	4.5
+ICE CREAM	4.0
+PROFITEROL	2.5
+TIRAMISU	2.0
+
+DRINK
+COFFEE AND MINTS	2.5
+COKE	1.5
+ORANGE JUICE	2.0
+TEA	1.0
+
+Table Summaries:
+
+Table 1 summary:
+CARROT SOUP	1 * 3.5 = 3.5
+ICE CREAM	2 * 4.0 = 8.0
+Total for this table: 11,50
+Discount(s) included
+
+Table 2 summary:
+CHICKEN BALERNO	3 * 8.0 = 24.0 (-2.4)
+COFFEE AND MINTS	2 * 2.5 = 5.0
+Total for this table: 26,60
+Discount(s) included
+
+Frequency Report:
+
+Soup of the day: 0
+Profiterol: 0
+Ice Cream: 2
+Coke: 0
+Pizza Bread: 0
+Prawn Cocktail: 0
+Tiramisu: 0
+Pan Fried Chicken: 0
+Baked Mushrooms: 0
+Spagghettini: 0
+Roast Beef: 0
+Chocolate Cake: 0
+Smoked Salmon: 0
+Carrot Soup: 1
+Tea: 0
+Orange juice: 0
+Coffee and Mints: 2
+Roasted Lamb: 0
+Chicken Balerno: 3
+
+Finish

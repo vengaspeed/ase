@@ -20,6 +20,7 @@ import javax.swing.table.DefaultTableModel;
 
 import courseworkFSV.controller.ExitListener;
 import courseworkFSV.controller.ReportListener;
+import courseworkFSV.controller.tableListener;
 import courseworkFSV.interfaces.Observer;
 import courseworkFSV.model.Order;
 import courseworkFSV.model.Restaurant;
@@ -246,6 +247,10 @@ public class RestaurantGUI extends JFrame implements Observer {
 		}
 	}
 
+	public void export() {
+		restaurant.exportLog("log.txt");
+		restaurant.export("summary.txt");	
+	}
 	
 	@Override
 	/**
@@ -261,10 +266,10 @@ public class RestaurantGUI extends JFrame implements Observer {
 
 	public void setListener(ReportListener reportListener) {
 		// event is triggered by selecting it
-		report.addActionListener(reportListener); 
+		report.addActionListener(new ReportListener(this)); 
 		
 		// when user selects combo box element, event is triggered
-		tableIdChoice.addActionListener(reportListener);
+		tableIdChoice.addActionListener(new tableListener (this));
 		
 		exitSystem.addActionListener(new ExitListener());
 	}
