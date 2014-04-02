@@ -49,6 +49,8 @@ public class Kitchen extends ArrayList<Order> implements Observable {
 	@Override
 	public synchronized boolean add(Order o) {		
 		boolean result = super.add(o);
+		//add to kitchen log
+		setKitchenLog(o.getOrderId() +" added");
 		notifyObservers();
 		return result;
 	}
@@ -57,6 +59,8 @@ public class Kitchen extends ArrayList<Order> implements Observable {
 	public synchronized Order remove(int index) {
 		Order o = this.get(index);
 		Order order = super.remove(index);
+		//remove from kitchen log
+		setKitchenLog(o.getOrderId() +" removed");
 		notifyObservers();
 		return order;
 	}

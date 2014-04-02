@@ -62,7 +62,7 @@ public class Restaurant {
 		hatch = new Hatch();
 		orders = new LinkedList<Order>();
 		importMenu(menuFile);
-		createOrdersRandomly(4);
+		createOrdersRandomly(8);
 	}
 
 	/** Instance of the Restaurant class. */
